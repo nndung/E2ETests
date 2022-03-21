@@ -1,0 +1,45 @@
+{
+  "name": "cypress-master",
+  "version": "1.0.0",
+  "description": "cypress FW master",
+  "main": "index.js",
+  "scripts": {
+    "cypress:open": "node_modules\\.bin\\cypress open",
+    "cypress:run": "node_modules\\.bin\\cypress run --spec ** / *. spec.js",
+    "format": "prettier --write \"./**/*.{js,jsx,json}\"",
+    "test:smoke": "npx cypress-tags run --env TAGS=\"@loginsuccess\"",
+    "test:tn1NOTtn2": "node_modules\\.bin\\cypress-tags run --env TAGS=\"@regression and not @loginfail\"",
+    "test:tn1ANDtn2": "node_modules\\.bin\\cypress-tags run --env \"TAGS=@regression and @loginsuccess\"",
+    "test:tn1ORtn2": "node_modules\\.bin\\cypress-tags run --env \"TAGS=@loginfail or @smoke\"",
+    "clean:reports": "if exist cypress\\reports rmdir /S/Q cypress\\reports",
+    "test": "npx cypress run --browser chrome --headed",
+    "posttest": "node cucumber-html-report.js",
+    "run:test": "npm run test || npm run posttest"
+  },
+  "author": "binhle",
+  "license": "ISC",
+  "devDependencies": {
+    "cucumber-html-reporter": "^5.5.0",
+    "cypress": "^9.5.2",
+    "cypress-cucumber-attach-screenshots-to-failed-steps": "^1.0.0",
+    "cypress-cucumber-preprocessor": "^4.3.1",
+    "cypress-failed-log": "^2.9.2",
+    "cypress-xpath": "^1.6.2",
+    "del": "^6.0.0",
+    "lodash": "^4.17.21",
+    "multiple-cucumber-html-reporter": "^1.19.0",
+    "prettier": "2.5.1"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true,
+    "cucumberJson": {
+      "generate": true,
+      "outputFolder": "cypress/reports/cucumber-json",
+      "filePrefix": "",
+      "fileSuffix": ".cucumber"
+    }
+  },
+  "dependencies": {
+    "ajv": "^7.2.4"
+  }
+}
