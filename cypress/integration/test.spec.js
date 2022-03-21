@@ -16,4 +16,14 @@ describe('test', () => {
       homePage.newPostMenu.should('not.be.visible')
     },
   )
+
+  it(
+    'demo2',
+    {
+      retries: 1,
+    },
+    () => {
+      homePage.newPostMenu.should('not.be.visible')
+    },
+  )
 })
