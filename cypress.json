@@ -1,11 +1,15 @@
 {
   "$schema": "https://on.cypress.io/cypress.schema.json",
   "defaultCommandTimeout":6000,
-  "testFiles": "**/*.feature",
-  "baseUrl": "https://react-redux.realworld.io/#",
+  "testFiles": [
+    "**/*.feature",
+    "**/*.spec.js"
+  ],
+  "baseUrl": "https://demoqa.com",
   "experimentalSessionSupport": true,
   "env": {
     "TAGS": "",
+    "apiUrl": "https://demoqa.com",
     "apiServer": "https://conduit.productionready.io/api"
   }
 }

@@ -1,4 +1,4 @@
-export const HeadersHelpers = {
+const HeadersHelpers = {
 	getHeaders(token, content = false) {
 		let headers = {
 			Authorization: 'Bearer ' + token,
@@ -9,3 +9,4 @@ export const HeadersHelpers = {
 		return headers
 	},
 }
+export default HeadersHelpers

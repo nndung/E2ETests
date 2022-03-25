@@ -1,6 +1,6 @@
 import { UserToken } from './user-token'
 
-export const RequestHelper = {
+const RequestHelper = {
 	sendGetRequest(userToken = UserToken.getAuthToken(), endPoint) {
 		let url = Cypress.env('apiUrl') + endPoint
 		cy.request({
@@ -10,16 +10,15 @@ export const RequestHelper = {
 	},
 
 	sendPostRequest(
-		userToken,
 		endPoint,
-		data = {},
-		header = UserToken.getAuthToken
+		headers,
+		data
 	) {
 		let url = Cypress.env('apiUrl') + endPoint
 		cy.request({
 			method: 'POST',
 			url: url,
-			headers: userToken,
+			headers: headers,
 			body: data,
 			failOnStatusCode: false,
 		}).as('response')
@@ -42,3 +41,5 @@ export const RequestHelper = {
 		}).as('response')
 	},
 }
+
+export default RequestHelper
