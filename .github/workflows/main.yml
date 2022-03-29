@@ -3,8 +3,16 @@ on: [push]
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
+    # Cypress Docker image with Chrome v78
+    # and Firefox v70 pre-installed
+    container: cypress/browsers:node12.13.0-chrome78-ff70
     steps:
       - name: Checkout
         uses: actions/checkout@v3.0.0
       - name: Cypress.io
         uses: cypress-io/github-action@v2.9.7
+        with:
+          browser: chrome
+          spec: |
+            cypress/integration/*.spec.js
+            cypress/integration/**/*.feature
